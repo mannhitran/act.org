@@ -26,6 +26,7 @@
             --navy: #1a3a52;
             --light-cyan: #87ceeb;
             --dark-navy: #0f1e2e;
+            --green: #7ec850;
         }
 
         /* Typography */
@@ -37,10 +38,6 @@
         .accent-text {
             font-family: 'Garet', serif;
             font-weight: 700;
-        }
-
-        body-text {
-            font-family: 'Avenir', sans-serif;
         }
 
         /* Header Navigation */
@@ -152,414 +149,298 @@
             padding-left: 2rem;
         }
 
-        /* Mountain Background Hero */
+        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #4a7c7e 0%, #5a8fa5 25%, #7ca8c0 50%, #9bbdd4 75%, #b0d4e0 100%);
             position: relative;
-            padding: 5rem 2rem;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 600px;
+            padding: 3rem 2rem;
             overflow: hidden;
         }
 
-        /* Mountain layers */
         .hero::before {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            height: 300px;
+            height: 200px;
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300"><defs><linearGradient id="mountain-gradient" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%%" style="stop-color:%234a7c7e;stop-opacity:0.8" /><stop offset="100%%" style="stop-color:%232d5a5f;stop-opacity:1" /></linearGradient></defs><path d="M0,150 L150,50 L300,120 L450,40 L600,100 L750,30 L900,110 L1050,60 L1200,140 L1200,300 L0,300 Z" fill="url(%23mountain-gradient)"/></svg>') no-repeat bottom;
             background-size: cover;
             opacity: 0.9;
             z-index: 1;
         }
 
-        /* Water reflection effect */
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 100px;
-            left: 0;
-            right: 0;
-            height: 100px;
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(135, 206, 235, 0.2));
-            background-image: 
-                linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05) 76%, transparent 77%, transparent),
-                linear-gradient(transparent 24%, rgba(135, 206, 235, 0.1) 25%, rgba(135, 206, 235, 0.1) 26%, transparent 27%);
-            background-size: 50px 50px, 40px 40px;
-            z-index: 2;
-        }
-
         .hero-content {
             max-width: 1200px;
+            margin: 0 auto;
             display: flex;
-            flex-direction: column;
             align-items: center;
             gap: 2rem;
             position: relative;
-            z-index: 3;
+            z-index: 2;
+            padding-bottom: 150px;
         }
 
-        .hero-logo {
-            width: 200px;
-            height: 200px;
+        .hero-logo-container {
+            width: 120px;
+            height: 120px;
             display: flex;
             align-items: center;
             justify-content: center;
-            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
-            animation: float 3s ease-in-out infinite;
+            flex-shrink: 0;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .hero-logo svg {
+        .hero-logo-container svg {
             width: 100%;
             height: 100%;
         }
 
         .hero-text {
-            text-align: center;
             color: white;
         }
 
         .hero h1 {
             font-size: 5rem;
-            margin-bottom: 0.5rem;
             color: white;
             font-family: 'Helvetica Now', sans-serif;
             letter-spacing: 0.1em;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             font-weight: 900;
+            margin: 0;
+            line-height: 1;
         }
 
         .hero .vision-tagline {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            color: #c8f0e0;
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+            color: var(--green);
             font-family: 'Garet', serif;
             font-weight: 700;
             letter-spacing: 0.05em;
             text-transform: uppercase;
         }
 
-        .cta-button {
-            display: inline-block;
-            background-color: var(--cyan);
-            color: var(--navy);
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            border: 2px solid var(--cyan);
-            font-family: 'Helvetica Now', sans-serif;
-            font-size: 1.1rem;
-        }
-
-        .cta-button:hover {
-            background-color: transparent;
-            color: white;
-            border-color: white;
-        }
-
-        /* Section Styles */
-        .section {
+        /* Main Content Section */
+        .main-content {
+            background: white;
             padding: 4rem 2rem;
-            position: relative;
         }
 
-        .section.light {
-            background-color: #f5f5f5;
-        }
-
-        .section.light::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20,80 Q30,60 40,70 T60,80" stroke="%2320b2aa" stroke-width="0.5" fill="none" opacity="0.1"/><path d="M70,20 Q75,40 85,30 T95,50" stroke="%2320b2aa" stroke-width="0.5" fill="none" opacity="0.1"/></svg>');
-            background-repeat: repeat;
-            background-size: 200px 200px;
-            opacity: 0.3;
-            pointer-events: none;
-        }
-
-        .section-content {
+        .main-content-wrapper {
             max-width: 1200px;
             margin: 0 auto;
-            position: relative;
-            z-index: 1;
         }
 
-        .section h2 {
-            font-size: 2.8rem;
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 1.5rem;
             color: var(--navy);
-            margin-bottom: 1.5rem;
-            text-align: center;
-            font-family: 'Helvetica Now', sans-serif;
-            letter-spacing: 0.02em;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
         }
 
-        .section-intro {
-            text-align: center;
-            color: #666;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            font-size: 1.1rem;
-            line-height: 1.8;
+        .section-title .main-title {
+            font-size: 2.8rem;
+            color: var(--cyan);
+            font-style: italic;
+            font-family: 'Avenir', sans-serif;
+            font-weight: 400;
         }
 
-        /* Alternating Row Layout */
-        .alternate-row {
+        .content-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .content-box {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .content-box-header {
+            display: flex;
             align-items: center;
-            margin: 3rem 0;
+            gap: 1rem;
         }
 
-        .alternate-row.reverse {
-            direction: rtl;
+        .box-title {
+            background: var(--cyan);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: 'Helvetica Now', sans-serif;
+            white-space: nowrap;
         }
 
-        .alternate-row.reverse > * {
-            direction: ltr;
+        .content-card {
+            background: #f5f5f5;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--cyan);
         }
 
-        .alternate-row-image {
-            width: 100%;
-            height: 350px;
-            background: linear-gradient(135deg, var(--cyan) 0%, var(--light-cyan) 100%);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            position: relative;
+        .content-card h3 {
+            color: var(--navy);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
         }
 
-        .alternate-row-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(26, 58, 82, 0.1) 0%, transparent 50%);
-            pointer-events: none;
+        .content-card p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
         }
 
-        .alternate-row-image-placeholder {
-            width: 100%;
-            height: 100%;
+        .who-we-serve {
+            background: var(--cyan);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+
+        .who-we-serve h3 {
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .who-we-serve ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .who-we-serve li {
+            padding: 0.4rem 0;
+            font-size: 0.95rem;
+            margin-left: 0;
+        }
+
+        .who-we-serve li::before {
+            content: "• ";
+            margin-right: 0.5rem;
+        }
+
+        /* Program Icons */
+        .program-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .program-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: #f0f0f0;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+        }
+
+        .program-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--cyan);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            color: white;
+            font-size: 1.8rem;
+            flex-shrink: 0;
         }
 
-        .alternate-row-text h3 {
-            font-size: 2rem;
+        .program-text h4 {
             color: var(--navy);
-            margin-bottom: 1rem;
-            font-family: 'Helvetica Now', sans-serif;
-        }
-
-        .alternate-row-text p {
-            color: #666;
-            line-height: 1.8;
             font-size: 1rem;
-            margin-bottom: 1rem;
+            margin: 0;
         }
 
-        .about-grid {
+        /* Bottom Section */
+        .bottom-section {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
         }
 
-        .card {
-            background: white;
+        .partner-section {
+            background: var(--dark-navy);
+            color: white;
             padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-left: 5px solid var(--cyan);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-        }
-
-        .card h3 {
-            color: var(--navy);
-            margin-bottom: 1rem;
-            font-size: 1.6rem;
-            font-family: 'Helvetica Now', sans-serif;
-        }
-
-        .card p {
-            color: #666;
-            line-height: 1.8;
-            font-family: 'Avenir', sans-serif;
-        }
-
-        /* Mission & Vision Section */
-        .mission-vision {
-            background: linear-gradient(135deg, var(--cyan) 0%, var(--light-cyan) 100%);
-            color: var(--navy);
-            padding: 5rem 2rem;
-            position: relative;
-        }
-
-        .mission-vision::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                radial-gradient(circle at 15% 25%, rgba(26, 58, 82, 0.1) 2px, transparent 2px),
-                radial-gradient(circle at 85% 75%, rgba(26, 58, 82, 0.1) 2px, transparent 2px),
-                radial-gradient(circle at 50% 50%, rgba(26, 58, 82, 0.08) 1px, transparent 1px);
-            background-size: 150px 150px, 180px 180px, 100px 100px;
-            background-attachment: fixed;
-            opacity: 0.5;
-            pointer-events: none;
-        }
-
-        .mission-vision-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 3rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .mission-vision-box {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 3rem;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .mission-vision-box h3 {
-            font-size: 2rem;
-            color: var(--navy);
+        .partner-section h3 {
+            font-size: 1.5rem;
             margin-bottom: 1.5rem;
-            font-family: 'Helvetica Now', sans-serif;
-            padding-bottom: 1rem;
-            border-bottom: 3px solid var(--cyan);
+            color: white;
         }
 
-        .mission-vision-box p {
-            font-size: 1.2rem;
-            line-height: 1.9;
-            color: var(--navy);
-            font-family: 'Garet', serif;
-            font-weight: 700;
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
         }
 
-        /* Programs Section - Forest/Green theme */
-        .section.programs {
-            background: linear-gradient(to bottom, #f0f8f7 0%, #f5f5f5 100%);
+        .contact-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            flex-shrink: 0;
         }
 
-        .section.programs::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path d="M50,150 L50,50 L40,70 M50,50 L60,70" stroke="%2320b2aa" stroke-width="1" fill="none" opacity="0.15"/><path d="M150,180 L150,80 L140,100 M150,80 L160,100" stroke="%2320b2aa" stroke-width="1" fill="none" opacity="0.15"/></svg>');
-            background-repeat: repeat;
-            background-size: 300px 300px;
-            opacity: 0.3;
-            pointer-events: none;
+        .ambassador-section {
+            background: var(--cyan);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
 
-        /* Resources Section - Water wave theme */
-        .section.resources {
-            background-color: #f0f4f8;
+        .ambassador-section h3 {
+            font-size: 1.5rem;
+            color: white;
+            margin: 0;
         }
 
-        .section.resources::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50"><path d="M0,25 Q25,15 50,25 T100,25" stroke="%2320b2aa" stroke-width="1" fill="none" opacity="0.15"/><path d="M0,35 Q25,25 50,35 T100,35" stroke="%2320b2aa" stroke-width="1" fill="none" opacity="0.1"/></svg>');
-            background-repeat: repeat-x;
-            background-size: 100% 80px;
-            opacity: 0.4;
-            pointer-events: none;
+        .ambassador-section p {
+            color: white;
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
-        /* Advocacy Section - Network theme */
-        .section.advocacy {
-            background-color: #fff9f5;
-        }
-
-        .section.advocacy::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                radial-gradient(circle at 20% 30%, rgba(32, 178, 170, 0.08) 20px, transparent 20px),
-                radial-gradient(circle at 80% 70%, rgba(32, 178, 170, 0.08) 25px, transparent 25px),
-                radial-gradient(circle at 50% 50%, rgba(32, 178, 170, 0.06) 30px, transparent 30px);
-            background-size: 100% 100%;
-            opacity: 0.5;
-            pointer-events: none;
-        }
-
-        /* Events Section - Calendar grid theme */
-        .section.events {
-            background: linear-gradient(135deg, #f5f5f5 0%, #f9f9f9 100%);
-        }
-
-        .section.events::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                linear-gradient(0deg, transparent 24%, rgba(32, 178, 170, 0.08) 25%, rgba(32, 178, 170, 0.08) 26%, transparent 27%, transparent 74%, rgba(32, 178, 170, 0.08) 75%, rgba(32, 178, 170, 0.08) 76%, transparent 77%, transparent),
-                linear-gradient(90deg, transparent 24%, rgba(32, 178, 170, 0.08) 25%, rgba(32, 178, 170, 0.08) 26%, transparent 27%, transparent 74%, rgba(32, 178, 170, 0.08) 75%, rgba(32, 178, 170, 0.08) 76%, transparent 77%, transparent);
-            background-size: 50px 50px;
-            opacity: 0.3;
-            pointer-events: none;
-        }
-
-        /* Get Involved Section - Connected hands theme */
-        .section.get-involved {
-            background: linear-gradient(to right, #f0f8f7 0%, #f5f5f5 50%, #f9f9f9 100%);
+        .ambassador-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1rem;
+            font-size: 3rem;
         }
 
         /* Footer */
@@ -596,25 +477,26 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                padding-bottom: 100px;
+            }
+
             .hero h1 {
                 font-size: 3rem;
             }
 
-            .hero .vision-tagline {
-                font-size: 1rem;
+            .content-grid {
+                grid-template-columns: 1fr;
             }
 
-            .logo-img {
-                width: 35px;
-                height: 35px;
+            .bottom-section {
+                grid-template-columns: 1fr;
             }
 
-            .logo-text {
-                font-size: 1.3rem;
-            }
-
-            nav {
-                flex-wrap: wrap;
+            .section-title .main-title {
+                font-size: 2rem;
             }
 
             nav ul {
@@ -626,41 +508,6 @@
                 padding: 0.8rem 1rem;
                 font-size: 0.9rem;
             }
-
-            .dropdown-menu {
-                position: static;
-                display: none;
-                background-color: var(--navy);
-            }
-
-            .dropdown:hover .dropdown-menu {
-                display: block;
-            }
-
-            .section h2 {
-                font-size: 2rem;
-            }
-
-            .mission-vision-content {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-logo {
-                width: 150px;
-                height: 150px;
-            }
-
-            .alternate-row {
-                grid-template-columns: 1fr;
-            }
-
-            .alternate-row.reverse {
-                direction: ltr;
-            }
-
-            .alternate-row-image {
-                height: 250px;
-            }
         }
     </style>
 </head>
@@ -671,27 +518,16 @@
             <div class="logo-section">
                 <div class="logo-img">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid meet">
-                        <!-- Crown/Head circle -->
                         <circle cx="100" cy="60" r="18" fill="#1a3a52"/>
-                        
-                        <!-- Sparkles -->
                         <g fill="#20b2aa">
                             <polygon points="100,30 105,45 120,45 110,55 115,70 100,60 85,70 90,55 80,45 95,45"/>
                             <polygon points="70,50 74,60 85,60 77,67 80,77 70,70 60,77 63,67 55,60 66,60"/>
                             <polygon points="130,50 134,60 145,60 137,67 140,77 130,70 120,77 123,67 115,60 126,60"/>
                         </g>
-                        
-                        <!-- Main V shape - Navy -->
                         <path d="M 70 80 Q 75 100 100 150 Q 125 100 130 80" fill="#1a3a52"/>
-                        
-                        <!-- Side wings - Cyan -->
                         <path d="M 55 90 Q 65 110 75 160 Q 80 155 85 110" fill="#20b2aa"/>
                         <path d="M 145 90 Q 135 110 125 160 Q 120 155 115 110" fill="#20b2aa"/>
-                        
-                        <!-- Accents -->
                         <line x1="115" y1="110" x2="125" y2="140" stroke="white" stroke-width="2" opacity="0.7"/>
-                        
-                        <!-- Bottom decorative elements -->
                         <path d="M 60 180 Q 70 190 85 195 Q 85 185 90 175" fill="#20b2aa"/>
                         <path d="M 140 180 Q 130 190 115 195 Q 115 185 110 175" fill="#20b2aa"/>
                     </svg>
@@ -704,90 +540,48 @@
                     <ul class="dropdown-menu">
                         <li><a href="#about-mission">Our Mission</a></li>
                         <li><a href="#about-vision">Our Vision</a></li>
-                        <li><a href="#about-team">Meet the Team</a></li>
-                        <li><a href="#about-history">Our History</a></li>
                     </ul>
                 </li>
-
                 <li class="dropdown">
                     <a href="#programs">Programs</a>
                     <ul class="dropdown-menu">
                         <li><a href="#programs-youth">Youth Prevention</a></li>
                         <li><a href="#programs-community">Community Initiatives</a></li>
-                        <li><a href="#programs-education">Education & Training</a></li>
-                        <li><a href="#programs-leadership">Leadership Development</a></li>
                     </ul>
                 </li>
-
                 <li class="dropdown">
                     <a href="#resources">Resources</a>
                     <ul class="dropdown-menu">
                         <li><a href="#resources-guides">Prevention Guides</a></li>
                         <li><a href="#resources-toolkits">Community Toolkits</a></li>
-                        <li><a href="#resources-research">Research & Data</a></li>
-                        <li><a href="#resources-downloads">Downloads</a></li>
                     </ul>
                 </li>
-
                 <li class="dropdown">
-                    <a href="#advocacy">Advocacy</a>
+                    <a href="#contact">Contact</a>
                     <ul class="dropdown-menu">
-                        <li><a href="#advocacy-policy">Policy Initiatives</a></li>
-                        <li><a href="#advocacy-campaigns">Campaigns</a></li>
-                        <li><a href="#advocacy-partnerships">Partnerships</a></li>
-                        <li><a href="#advocacy-impact">Impact Reports</a></li>
-                    </ul>
-                </li>
-
-                <li class="dropdown">
-                    <a href="#events">Events</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#events-upcoming">Upcoming Events</a></li>
-                        <li><a href="#events-workshops">Workshops</a></li>
-                        <li><a href="#events-conferences">Conferences</a></li>
-                        <li><a href="#events-calendar">Event Calendar</a></li>
-                    </ul>
-                </li>
-
-                <li class="dropdown">
-                    <a href="#get-involved">Get Involved</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#get-involved-volunteer">Volunteer</a></li>
-                        <li><a href="#get-involved-donate">Donate</a></li>
-                        <li><a href="#get-involved-partner">Become a Partner</a></li>
-                        <li><a href="#get-involved-subscribe">Subscribe to Updates</a></li>
+                        <li><a href="#contact-email">Email</a></li>
+                        <li><a href="#contact-phone">Phone</a></li>
                     </ul>
                 </li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero Section with Mountain Background -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-logo">
+            <div class="hero-logo-container">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid meet">
-                    <!-- Crown/Head circle -->
-                    <circle cx="100" cy="60" r="18" fill="#1a3a52"/>
-                    
-                    <!-- Sparkles -->
+                    <circle cx="100" cy="60" r="18" fill="white"/>
                     <g fill="#20b2aa">
                         <polygon points="100,30 105,45 120,45 110,55 115,70 100,60 85,70 90,55 80,45 95,45"/>
                         <polygon points="70,50 74,60 85,60 77,67 80,77 70,70 60,77 63,67 55,60 66,60"/>
                         <polygon points="130,50 134,60 145,60 137,67 140,77 130,70 120,77 123,67 115,60 126,60"/>
                     </g>
-                    
-                    <!-- Main V shape - Navy -->
-                    <path d="M 70 80 Q 75 100 100 150 Q 125 100 130 80" fill="#1a3a52"/>
-                    
-                    <!-- Side wings - Cyan -->
+                    <path d="M 70 80 Q 75 100 100 150 Q 125 100 130 80" fill="white"/>
                     <path d="M 55 90 Q 65 110 75 160 Q 80 155 85 110" fill="#20b2aa"/>
                     <path d="M 145 90 Q 135 110 125 160 Q 120 155 115 110" fill="#20b2aa"/>
-                    
-                    <!-- Accents -->
                     <line x1="115" y1="110" x2="125" y2="140" stroke="white" stroke-width="2" opacity="0.7"/>
-                    
-                    <!-- Bottom decorative elements -->
                     <path d="M 60 180 Q 70 190 85 195 Q 85 185 90 175" fill="#20b2aa"/>
                     <path d="M 140 180 Q 130 190 115 195 Q 115 185 110 175" fill="#20b2aa"/>
                 </svg>
@@ -795,233 +589,116 @@
             <div class="hero-text">
                 <h1>ACT</h1>
                 <div class="vision-tagline">HEALTHY INDIVIDUALS, HEALTHY COMMUNITIES.</div>
-                <a href="#get-involved" class="cta-button">Get Involved Today</a>
             </div>
         </div>
     </section>
 
-    <!-- Mission & Vision Section -->
-    <section class="mission-vision">
-        <div class="mission-vision-content">
-            <div class="mission-vision-box" id="about-mission">
-                <h3>Our Mission</h3>
-                <p>To serve as the statewide prevention catalyst, empowering individuals and fostering partnerships to promote safe, healthy, and drug-free communities.</p>
-            </div>
-            <div class="mission-vision-box" id="about-vision">
-                <h3>Our Vision</h3>
-                <p>Healthy individuals… Healthy communities…</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section with Alternating Layout -->
-    <section class="section light" id="about">
-        <div class="section-content">
-            <h2>About ACT</h2>
-            <p class="section-intro">
-                ACT Missouri is a prevention-focused nonprofit dedicated to empowering youth and communities to create safer, healthier, and drug-free environments.
-            </p>
-            
-            <!-- Alternating Row 1 -->
-            <div class="alternate-row">
-                <div class="alternate-row-text">
-                    <h3>👥 Our Team</h3>
-                    <p>Dedicated professionals and passionate volunteers committed to making a difference through evidence-based prevention programs and community engagement.</p>
-                </div>
-                <div class="alternate-row-image">
-                    <div class="alternate-row-image-placeholder">🤝</div>
-                </div>
+    <!-- Main Content -->
+    <section class="main-content" id="about">
+        <div class="main-content-wrapper">
+            <div class="section-title">
+                <h2>EMPOWERING YOUTH & COMMUNITIES</h2>
+                <div class="main-title">Across the Midwest</div>
             </div>
 
-            <!-- Alternating Row 2 (Reversed) -->
-            <div class="alternate-row reverse">
-                <div class="alternate-row-text">
-                    <h3>📚 Our History</h3>
-                    <p>For years, ACT has been at the forefront of prevention efforts in Missouri, building a legacy of positive community impact and sustainable change.</p>
-                </div>
-                <div class="alternate-row-image">
-                    <div class="alternate-row-image-placeholder">📖</div>
-                </div>
-            </div>
+            <div class="content-grid">
+                <!-- Left Column -->
+                <div class="content-box">
+                    <div class="box-title">About ACT</div>
+                    
+                    <div class="content-card">
+                        <p>ACT is a Midwest regional prevention and youth development organization dedicated to helping young people make informed, healthy decisions.</p>
+                    </div>
 
-            <!-- Alternating Row 3 -->
-            <div class="alternate-row">
-                <div class="alternate-row-text">
-                    <h3>🎯 Our Approach</h3>
-                    <p>We use evidence-based strategies and collaborative partnerships to create comprehensive prevention initiatives that address the root causes of substance abuse.</p>
-                </div>
-                <div class="alternate-row-image">
-                    <div class="alternate-row-image-placeholder">🎯</div>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <div class="box-title">Mission Statement</div>
+                    
+                    <div class="content-card">
+                        <p>To serve as the statewide prevention catalyst, empowering individuals and fostering partnerships to promote safe, healthy, and drug-free communities.</p>
+                    </div>
 
-    <!-- Programs Section with Alternating Layout -->
-    <section class="section programs" id="programs">
-        <div class="section-content">
-            <h2>Our Programs</h2>
-            <p class="section-intro">
-                ACT offers comprehensive, evidence-based prevention programs designed to empower youth and strengthen communities across Missouri.
-            </p>
-            
-            <!-- Alternating Row 1 -->
-            <div class="alternate-row">
-                <div class="alternate-row-text">
-                    <h3>🎓 Youth Prevention</h3>
-                    <p>Targeted programs for young people focusing on substance abuse prevention, healthy decision-making, and building resilience through interactive education and mentorship.</p>
+                    <div class="who-we-serve">
+                        <h3>Who We Serve?</h3>
+                        <ul>
+                            <li>Youth and young adults</li>
+                            <li>Schools and educators</li>
+                            <li>Community coalitions</li>
+                            <li>Nonprofit organizations</li>
+                            <li>Public health agencies</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="alternate-row-image">
-                    <div class="alternate-row-image-placeholder">🎓</div>
-                </div>
-            </div>
 
-            <!-- Alternating Row 2 (Reversed) -->
-            <div class="alternate-row reverse">
-                <div class="alternate-row-text">
-                    <h3>🤝 Community Initiatives</h3>
-                    <p>Collaborative efforts with local organizations, schools, and families to create drug-free environments and strengthen community bonds through partnership.</p>
-                </div>
-                <div class="alternate-row-image">
-                    <div class="alternate-row-image-placeholder">🤝</div>
+                <!-- Right Column -->
+                <div class="content-box">
+                    <div class="box-title">What We Do?</div>
+                    
+                    <div class="program-items">
+                        <div class="program-item">
+                            <div class="program-icon">💡</div>
+                            <div class="program-text">
+                                <h4>YOUTH PREVENTION PROGRAMS</h4>
+                            </div>
+                        </div>
+
+                        <div class="program-item">
+                            <div class="program-icon">🤝</div>
+                            <div class="program-text">
+                                <h4>COMMUNITY PARTNERSHIPS</h4>
+                            </div>
+                        </div>
+
+                        <div class="program-item">
+                            <div class="program-icon">📚</div>
+                            <div class="program-text">
+                                <h4>EDUCATION & ADVOCACY</h4>
+                            </div>
+                        </div>
+
+                        <div class="program-item">
+                            <div class="program-icon">👥</div>
+                            <div class="program-text">
+                                <h4>REGIONAL COALITION SUPPORT</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="background: #f0f0f0; padding: 1rem; border-radius: 10px; text-align: center; margin-top: 1rem;">
+                        <p style="color: #666; margin: 0; font-size: 0.85rem;">🖼️ Team Photo</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Alternating Row 3 -->
-            <div class="alternate-row">
-                <div class="alternate-row-text">
-                    <h3>📚 Education & Training</h3>
-                    <p>Professional development workshops and training sessions for educators, parents, and community leaders on prevention strategies and evidence-based practices.</p>
+            <!-- Bottom Section -->
+            <div class="bottom-section">
+                <div class="partner-section">
+                    <h3>PARTNER WITH US</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <strong>Email</strong><br>
+                            <a href="mailto:info@act.org" style="color: var(--cyan); text-decoration: none;">info@act.org</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div>
+                            <strong>Social Media</strong><br>
+                            @ActPrevention
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🌐</div>
+                        <div>
+                            <strong>Website</strong><br>
+                            <a href="https://www.act.org" style="color: var(--cyan); text-decoration: none;">www.act.org</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="alternate-row-image">
-                    <div class="alternate-row-image-placeholder">📚</div>
-                </div>
-            </div>
 
-            <!-- Alternating Row 4 (Reversed) -->
-            <div class="alternate-row reverse">
-                <div class="alternate-row-text">
-                    <h3>🌟 Leadership Development</h3>
-                    <p>Programs designed to cultivate emerging leaders who can drive prevention initiatives and create sustainable change in their communities.</p>
-                </div>
-                <div class="alternate-row-image">
-                    <div class="alternate-row-image-placeholder">🌟</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Resources Section -->
-    <section class="section resources light" id="resources">
-        <div class="section-content">
-            <h2>Resources</h2>
-            <p class="section-intro">
-                Access valuable tools, guides, and information to support prevention efforts in your community.
-            </p>
-            
-            <div class="about-grid">
-                <div class="card" id="resources-guides">
-                    <h3>📖 Prevention Guides</h3>
-                    <p>Comprehensive guides on substance abuse prevention, youth development, and community health. Designed for parents, educators, and community members.</p>
-                </div>
-                <div class="card" id="resources-toolkits">
-                    <h3>🛠️ Community Toolkits</h3>
-                    <p>Ready-to-use resources including lesson plans, activity guides, and communication templates to implement prevention programs in your organization.</p>
-                </div>
-                <div class="card" id="resources-research">
-                    <h3>🔬 Research & Data</h3>
-                    <p>Latest research findings, impact data, and evidence-based practices to guide informed decision-making and program development.</p>
-                </div>
-                <div class="card" id="resources-downloads">
-                    <h3>📥 Downloads</h3>
-                    <p>Free downloadable resources, templates, and materials to support your prevention work and community initiatives.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Advocacy Section -->
-    <section class="section advocacy" id="advocacy">
-        <div class="section-content">
-            <h2>Advocacy & Impact</h2>
-            <p class="section-intro">
-                ACT advocates for policies and initiatives that create healthier communities and protect our youth.
-            </p>
-            
-            <div class="about-grid">
-                <div class="card" id="advocacy-policy">
-                    <h3>📋 Policy Initiatives</h3>
-                    <p>Working to influence policy decisions at local, state, and national levels to support prevention and youth wellness initiatives.</p>
-                </div>
-                <div class="card" id="advocacy-campaigns">
-                    <h3>📢 Awareness Campaigns</h3>
-                    <p>Strategic campaigns to raise awareness about substance abuse prevention and promote healthy, drug-free lifestyles in communities.</p>
-                </div>
-                <div class="card" id="advocacy-partnerships">
-                    <h3>🤝 Partnerships</h3>
-                    <p>Building strategic partnerships with organizations, government agencies, and community leaders to amplify our prevention message.</p>
-                </div>
-                <div class="card" id="advocacy-impact">
-                    <h3>📊 Our Impact</h3>
-                    <p>Measurable results showing the positive impact of our advocacy efforts and prevention programs on individuals and communities across Missouri.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Events Section -->
-    <section class="section events light" id="events">
-        <div class="section-content">
-            <h2>Events</h2>
-            <p class="section-intro">
-                Join us for workshops, conferences, and community events focused on prevention and community health.
-            </p>
-            
-            <div class="about-grid">
-                <div class="card" id="events-upcoming">
-                    <h3>📅 Upcoming Events</h3>
-                    <p>Stay informed about our latest events, community forums, and prevention workshops happening throughout Missouri.</p>
-                </div>
-                <div class="card" id="events-workshops">
-                    <h3>🎓 Workshops</h3>
-                    <p>Hands-on training sessions covering prevention strategies, youth engagement, and community leadership for educators and community leaders.</p>
-                </div>
-                <div class="card" id="events-conferences">
-                    <h3>🎤 Conferences</h3>
-                    <p>Regional and state conferences bringing together prevention professionals, advocates, and community members to share best practices and insights.</p>
-                </div>
-                <div class="card" id="events-calendar">
-                    <h3>📆 Event Calendar</h3>
-                    <p>Browse our complete calendar of events and programs throughout the year. Find something happening near you.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Get Involved Section -->
-    <section class="section get-involved" id="get-involved">
-        <div class="section-content">
-            <h2>Get Involved</h2>
-            <p class="section-intro">
-                Make a difference in your community. Whether volunteering, donating, or partnering with us, there are many ways to support ACT's mission.
-            </p>
-            
-            <div class="about-grid">
-                <div class="card" id="get-involved-volunteer">
-                    <h3>🤲 Volunteer</h3>
-                    <p>Join our team of dedicated volunteers and help us reach more youth and communities with evidence-based prevention programs and support.</p>
-                </div>
-                <div class="card" id="get-involved-donate">
-                    <h3>💝 Donate</h3>
-                    <p>Your donation directly supports our prevention programs, youth initiatives, and community outreach efforts across Missouri.</p>
-                </div>
-                <div class="card" id="get-involved-partner">
-                    <h3>🔗 Become a Partner</h3>
-                    <p>Organizations and businesses can partner with ACT to expand prevention efforts and create meaningful impact in the community.</p>
-                </div>
-                <div class="card" id="get-involved-subscribe">
-                    <h3>📧 Subscribe to Updates</h3>
-                    <p>Stay connected with ACT by subscribing to our newsletter and receiving the latest news, events, and resources delivered to your inbox.</p>
+                <div class="ambassador-section">
+                    <h3>Become Our Youth Ambassador</h3>
+                    <p>Student leaders are trained to advocate for prevention, support community initiatives, and lead youth-focused projects across the Midwest.</p>
+                    <div class="ambassador-image">👨‍👩‍👧‍👦</div>
                 </div>
             </div>
         </div>
