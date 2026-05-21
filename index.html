@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACT - Creating Safer, Healthier Communities</title>
+    <link href="https://fonts.googleapis.com/css2?family=Helvetica+Now&family=Avenir:wght@400;700&family=Garet:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Avenir:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Avenir', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Color Palette */
+        :root {
+            --cyan: #20b2aa;
+            --navy: #1a3a52;
+            --light-cyan: #87ceeb;
+            --dark-navy: #0f1e2e;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Helvetica Now', 'Helvetica Neue', sans-serif;
+            font-weight: 700;
+        }
+
+        .accent-text {
+            font-family: 'Garet', serif;
+            font-weight: 700;
+        }
+
+        body-text {
+            font-family: 'Avenir', sans-serif;
+        }
+
+        /* Header Navigation */
+        header {
+            background-color: var(--navy);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--cyan);
+            font-family: 'Helvetica Now', sans-serif;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 0;
+        }
+
+        nav > ul > li {
+            position: relative;
+        }
+
+        nav > ul > li > a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        nav > ul > li > a:hover {
+            background-color: var(--cyan);
+            color: var(--navy);
+        }
+
+        /* Dropdown Menus */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown > a::after {
+            content: " ▼";
+            font-size: 0.7rem;
+            margin-left: 0.3rem;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--dark-navy);
+            min-width: 250px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu li {
+            list-style: none;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: var(--cyan);
+            color: var(--navy);
+            padding-left: 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--dark-navy) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 600px;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .hero-logo {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .hero-logo img {
+            max-width: 300px;
+            width: 100%;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--cyan);
+            font-family: 'Helvetica Now', sans-serif;
+            letter-spacing: 0.05em;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            font-family: 'Avenir', sans-serif;
+        }
+
+        .hero .tagline {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            color: var(--cyan);
+            font-family: 'Garet', serif;
+            font-weight: 700;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--cyan);
+            color: var(--navy);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid var(--cyan);
+            font-family: 'Helvetica Now', sans-serif;
+            font-size: 1.1rem;
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--cyan);
+        }
+
+        /* About Section */
+        .section {
+            padding: 4rem 2rem;
+        }
+
+        .section.light {
+            background-color: #f5f5f5;
+        }
+
+        .section-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            font-size: 2.8rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-family: 'Helvetica Now', sans-serif;
+            letter-spacing: 0.02em;
+        }
+
+        .section-intro {
+            text-align: center;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid var(--cyan);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h3 {
+            color: var(--navy);
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+            font-family: 'Helvetica Now', sans-serif;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.8;
+            font-family: 'Avenir', sans-serif;
+        }
+
+        /* Mission & Vision Section */
+        .mission-vision {
+            background: linear-gradient(135deg, var(--cyan) 0%, var(--light-cyan) 100%);
+            color: var(--navy);
+            padding: 5rem 2rem;
+        }
+
+        .mission-vision-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+        }
+
+        .mission-vision-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .mission-vision-box h3 {
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+            font-family: 'Helvetica Now', sans-serif;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--cyan);
+        }
+
+        .mission-vision-box p {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            color: var(--navy);
+            font-family: 'Garet', serif;
+            font-weight: 700;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--navy);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            font-family: 'Avenir', sans-serif;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        .footer-links {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--cyan);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            nav {
+                flex-wrap: wrap;
+            }
+
+            nav ul {
+                width: 100%;
+                flex-wrap: wrap;
+            }
+
+            nav > ul > li > a {
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .dropdown-menu {
+                position: static;
+                display: none;
+                background-color: var(--navy);
+            }
+
+            .dropdown:hover .dropdown-menu {
+                display: block;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+
+            .mission-vision-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header>
+        <nav>
+            <div class="logo-text">🎯 ACT</div>
+            <ul>
+                <li class="dropdown">
+                    <a href="#about">About</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#about-mission">Our Mission</a></li>
+                        <li><a href="#about-vision">Our Vision</a></li>
+                        <li><a href="#about-team">Meet the Team</a></li>
+                        <li><a href="#about-history">Our History</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#programs">Programs</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#programs-youth">Youth Prevention</a></li>
+                        <li><a href="#programs-community">Community Initiatives</a></li>
+                        <li><a href="#programs-education">Education & Training</a></li>
+                        <li><a href="#programs-leadership">Leadership Development</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#resources">Resources</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#resources-guides">Prevention Guides</a></li>
+                        <li><a href="#resources-toolkits">Community Toolkits</a></li>
+                        <li><a href="#resources-research">Research & Data</a></li>
+                        <li><a href="#resources-downloads">Downloads</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#advocacy">Advocacy</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#advocacy-policy">Policy Initiatives</a></li>
+                        <li><a href="#advocacy-campaigns">Campaigns</a></li>
+                        <li><a href="#advocacy-partnerships">Partnerships</a></li>
+                        <li><a href="#advocacy-impact">Impact Reports</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#events">Events</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#events-upcoming">Upcoming Events</a></li>
+                        <li><a href="#events-workshops">Workshops</a></li>
+                        <li><a href="#events-conferences">Conferences</a></li>
+                        <li><a href="#events-calendar">Event Calendar</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#get-involved">Get Involved</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#get-involved-volunteer">Volunteer</a></li>
+                        <li><a href="#get-involved-donate">Donate</a></li>
+                        <li><a href="#get-involved-partner">Become a Partner</a></li>
+                        <li><a href="#get-involved-subscribe">Subscribe to Updates</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-logo">
+                <img src="logo.png" alt="ACT Logo">
+            </div>
+            <div class="hero-text">
+                <h1>ACT</h1>
+                <p>Creating Safer, Healthier, and Drug-Free Communities</p>
+                <div class="tagline">Healthy individuals… Healthy communities…</div>
+                <a href="#get-involved" class="cta-button">Get Involved Today</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="mission-vision">
+        <div class="mission-vision-content">
+            <div class="mission-vision-box" id="about-mission">
+                <h3>Our Mission</h3>
+                <p>To serve as the statewide prevention catalyst, empowering individuals and fostering partnerships to promote safe, healthy, and drug-free communities.</p>
+            </div>
+            <div class="mission-vision-box" id="about-vision">
+                <h3>Our Vision</h3>
+                <p>Healthy individuals… Healthy communities…</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section light" id="about">
+        <div class="section-content">
+            <h2>About ACT</h2>
+            <p class="section-intro">
+                ACT Missouri is a prevention-focused nonprofit dedicated to empowering youth and communities to create safer, healthier, and drug-free environments. We work tirelessly to strengthen individuals and communities across Missouri.
+            </p>
+            
+            <div class="about-grid">
+                <div class="card" id="about-team">
+                    <h3>👥 Our Team</h3>
+                    <p>Dedicated professionals and passionate volunteers committed to making a difference through evidence-based prevention programs and community engagement.</p>
+                </div>
+                <div class="card" id="about-history">
+                    <h3>📚 Our History</h3>
+                    <p>For years, ACT has been at the forefront of prevention efforts in Missouri, building a legacy of positive community impact and sustainable change.</p>
+                </div>
+                <div class="card">
+                    <h3>🎯 Our Approach</h3>
+                    <p>We use evidence-based strategies and collaborative partnerships to create comprehensive prevention initiatives that address the root causes of substance abuse.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="section" id="programs">
+        <div class="section-content">
+            <h2>Our Programs</h2>
+            <p class="section-intro">
+                ACT offers comprehensive, evidence-based prevention programs designed to empower youth and strengthen communities across Missouri.
+            </p>
+            
+            <div class="about-grid">
+                <div class="card" id="programs-youth">
+                    <h3>🎓 Youth Prevention</h3>
+                    <p>Targeted programs for young people focusing on substance abuse prevention, healthy decision-making, and building resilience through interactive education and mentorship.</p>
+                </div>
+                <div class="card" id="programs-community">
+                    <h3>🤝 Community Initiatives</h3>
+                    <p>Collaborative efforts with local organizations, schools, and families to create drug-free environments and strengthen community bonds through partnership.</p>
+                </div>
+                <div class="card" id="programs-education">
+                    <h3>📚 Education & Training</h3>
+                    <p>Professional development workshops and training sessions for educators, parents, and community leaders on prevention strategies and evidence-based practices.</p>
+                </div>
+                <div class="card" id="programs-leadership">
+                    <h3>🌟 Leadership Development</h3>
+                    <p>Programs designed to cultivate emerging leaders who can drive prevention initiatives and create sustainable change in their communities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="section light" id="resources">
+        <div class="section-content">
+            <h2>Resources</h2>
+            <p class="section-intro">
+                Access valuable tools, guides, and information to support prevention efforts in your community.
+            </p>
+            
+            <div class="about-grid">
+                <div class="card" id="resources-guides">
+                    <h3>📖 Prevention Guides</h3>
+                    <p>Comprehensive guides on substance abuse prevention, youth development, and community health. Designed for parents, educators, and community members.</p>
+                </div>
+                <div class="card" id="resources-toolkits">
+                    <h3>🛠️ Community Toolkits</h3>
+                    <p>Ready-to-use resources including lesson plans, activity guides, and communication templates to implement prevention programs in your organization.</p>
+                </div>
+                <div class="card" id="resources-research">
+                    <h3>🔬 Research & Data</h3>
+                    <p>Latest research findings, impact data, and evidence-based practices to guide informed decision-making and program development.</p>
+                </div>
+                <div class="card" id="resources-downloads">
+                    <h3>📥 Downloads</h3>
+                    <p>Free downloadable resources, templates, and materials to support your prevention work and community initiatives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advocacy Section -->
+    <section class="section" id="advocacy">
+        <div class="section-content">
+            <h2>Advocacy & Impact</h2>
+            <p class="section-intro">
+                ACT advocates for policies and initiatives that create healthier communities and protect our youth.
+            </p>
+            
+            <div class="about-grid">
+                <div class="card" id="advocacy-policy">
+                    <h3>📋 Policy Initiatives</h3>
+                    <p>Working to influence policy decisions at local, state, and national levels to support prevention and youth wellness initiatives.</p>
+                </div>
+                <div class="card" id="advocacy-campaigns">
+                    <h3>📢 Awareness Campaigns</h3>
+                    <p>Strategic campaigns to raise awareness about substance abuse prevention and promote healthy, drug-free lifestyles in communities.</p>
+                </div>
+                <div class="card" id="advocacy-partnerships">
+                    <h3>🤝 Partnerships</h3>
+                    <p>Building strategic partnerships with organizations, government agencies, and community leaders to amplify our prevention message.</p>
+                </div>
+                <div class="card" id="advocacy-impact">
+                    <h3>📊 Our Impact</h3>
+                    <p>Measurable results showing the positive impact of our advocacy efforts and prevention programs on individuals and communities across Missouri.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="section light" id="events">
+        <div class="section-content">
+            <h2>Events</h2>
+            <p class="section-intro">
+                Join us for workshops, conferences, and community events focused on prevention and community health.
+            </p>
+            
+            <div class="about-grid">
+                <div class="card" id="events-upcoming">
+                    <h3>📅 Upcoming Events</h3>
+                    <p>Stay informed about our latest events, community forums, and prevention workshops happening throughout Missouri.</p>
+                </div>
+                <div class="card" id="events-workshops">
+                    <h3>🎓 Workshops</h3>
+                    <p>Hands-on training sessions covering prevention strategies, youth engagement, and community leadership for educators and community leaders.</p>
+                </div>
+                <div class="card" id="events-conferences">
+                    <h3>🎤 Conferences</h3>
+                    <p>Regional and state conferences bringing together prevention professionals, advocates, and community members to share best practices and insights.</p>
+                </div>
+                <div class="card" id="events-calendar">
+                    <h3>📆 Event Calendar</h3>
+                    <p>Browse our complete calendar of events and programs throughout the year. Find something happening near you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Involved Section -->
+    <section class="section" id="get-involved">
+        <div class="section-content">
+            <h2>Get Involved</h2>
+            <p class="section-intro">
+                Make a difference in your community. Whether volunteering, donating, or partnering with us, there are many ways to support ACT's mission.
+            </p>
+            
+            <div class="about-grid">
+                <div class="card" id="get-involved-volunteer">
+                    <h3>🤲 Volunteer</h3>
+                    <p>Join our team of dedicated volunteers and help us reach more youth and communities with evidence-based prevention programs and support.</p>
+                </div>
+                <div class="card" id="get-involved-donate">
+                    <h3>💝 Donate</h3>
+                    <p>Your donation directly supports our prevention programs, youth initiatives, and community outreach efforts across Missouri.</p>
+                </div>
+                <div class="card" id="get-involved-partner">
+                    <h3>🔗 Become a Partner</h3>
+                    <p>Organizations and businesses can partner with ACT to expand prevention efforts and create meaningful impact in the community.</p>
+                </div>
+                <div class="card" id="get-involved-subscribe">
+                    <h3>📧 Subscribe to Updates</h3>
+                    <p>Stay connected with ACT by subscribing to our newsletter and receiving the latest news, events, and resources delivered to your inbox.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 ACT Missouri. All rights reserved.</p>
+        <p>Prevention-Focused Nonprofit Organization</p>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Us</a>
+        </div>
+    </footer>
+</body>
+</html>
