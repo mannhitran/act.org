@@ -63,6 +63,20 @@
             padding: 0 2rem;
         }
 
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .logo-text {
             font-size: 1.8rem;
             font-weight: bold;
@@ -191,6 +205,26 @@
             z-index: 3;
         }
 
+        .hero-logo {
+            width: 200px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-logo svg {
+            width: 100%;
+            height: 100%;
+        }
+
         .hero-text {
             text-align: center;
             color: white;
@@ -284,6 +318,69 @@
             margin: 0 auto 2rem;
             font-size: 1.1rem;
             line-height: 1.8;
+        }
+
+        /* Alternating Row Layout */
+        .alternate-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin: 3rem 0;
+        }
+
+        .alternate-row.reverse {
+            direction: rtl;
+        }
+
+        .alternate-row.reverse > * {
+            direction: ltr;
+        }
+
+        .alternate-row-image {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(135deg, var(--cyan) 0%, var(--light-cyan) 100%);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+
+        .alternate-row-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(26, 58, 82, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .alternate-row-image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .alternate-row-text h3 {
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            font-family: 'Helvetica Now', sans-serif;
+        }
+
+        .alternate-row-text p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1rem;
+            margin-bottom: 1rem;
         }
 
         .about-grid {
@@ -507,6 +604,15 @@
                 font-size: 1rem;
             }
 
+            .logo-img {
+                width: 35px;
+                height: 35px;
+            }
+
+            .logo-text {
+                font-size: 1.3rem;
+            }
+
             nav {
                 flex-wrap: wrap;
             }
@@ -538,6 +644,23 @@
             .mission-vision-content {
                 grid-template-columns: 1fr;
             }
+
+            .hero-logo {
+                width: 150px;
+                height: 150px;
+            }
+
+            .alternate-row {
+                grid-template-columns: 1fr;
+            }
+
+            .alternate-row.reverse {
+                direction: ltr;
+            }
+
+            .alternate-row-image {
+                height: 250px;
+            }
         }
     </style>
 </head>
@@ -545,7 +668,36 @@
     <!-- Header Navigation -->
     <header>
         <nav>
-            <div class="logo-text">🎯 ACT</div>
+            <div class="logo-section">
+                <div class="logo-img">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid meet">
+                        <!-- Crown/Head circle -->
+                        <circle cx="100" cy="60" r="18" fill="#1a3a52"/>
+                        
+                        <!-- Sparkles -->
+                        <g fill="#20b2aa">
+                            <polygon points="100,30 105,45 120,45 110,55 115,70 100,60 85,70 90,55 80,45 95,45"/>
+                            <polygon points="70,50 74,60 85,60 77,67 80,77 70,70 60,77 63,67 55,60 66,60"/>
+                            <polygon points="130,50 134,60 145,60 137,67 140,77 130,70 120,77 123,67 115,60 126,60"/>
+                        </g>
+                        
+                        <!-- Main V shape - Navy -->
+                        <path d="M 70 80 Q 75 100 100 150 Q 125 100 130 80" fill="#1a3a52"/>
+                        
+                        <!-- Side wings - Cyan -->
+                        <path d="M 55 90 Q 65 110 75 160 Q 80 155 85 110" fill="#20b2aa"/>
+                        <path d="M 145 90 Q 135 110 125 160 Q 120 155 115 110" fill="#20b2aa"/>
+                        
+                        <!-- Accents -->
+                        <line x1="115" y1="110" x2="125" y2="140" stroke="white" stroke-width="2" opacity="0.7"/>
+                        
+                        <!-- Bottom decorative elements -->
+                        <path d="M 60 180 Q 70 190 85 195 Q 85 185 90 175" fill="#20b2aa"/>
+                        <path d="M 140 180 Q 130 190 115 195 Q 115 185 110 175" fill="#20b2aa"/>
+                    </svg>
+                </div>
+                <div class="logo-text">ACT</div>
+            </div>
             <ul>
                 <li class="dropdown">
                     <a href="#about">About</a>
@@ -613,6 +765,33 @@
     <!-- Hero Section with Mountain Background -->
     <section class="hero">
         <div class="hero-content">
+            <div class="hero-logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid meet">
+                    <!-- Crown/Head circle -->
+                    <circle cx="100" cy="60" r="18" fill="#1a3a52"/>
+                    
+                    <!-- Sparkles -->
+                    <g fill="#20b2aa">
+                        <polygon points="100,30 105,45 120,45 110,55 115,70 100,60 85,70 90,55 80,45 95,45"/>
+                        <polygon points="70,50 74,60 85,60 77,67 80,77 70,70 60,77 63,67 55,60 66,60"/>
+                        <polygon points="130,50 134,60 145,60 137,67 140,77 130,70 120,77 123,67 115,60 126,60"/>
+                    </g>
+                    
+                    <!-- Main V shape - Navy -->
+                    <path d="M 70 80 Q 75 100 100 150 Q 125 100 130 80" fill="#1a3a52"/>
+                    
+                    <!-- Side wings - Cyan -->
+                    <path d="M 55 90 Q 65 110 75 160 Q 80 155 85 110" fill="#20b2aa"/>
+                    <path d="M 145 90 Q 135 110 125 160 Q 120 155 115 110" fill="#20b2aa"/>
+                    
+                    <!-- Accents -->
+                    <line x1="115" y1="110" x2="125" y2="140" stroke="white" stroke-width="2" opacity="0.7"/>
+                    
+                    <!-- Bottom decorative elements -->
+                    <path d="M 60 180 Q 70 190 85 195 Q 85 185 90 175" fill="#20b2aa"/>
+                    <path d="M 140 180 Q 130 190 115 195 Q 115 185 110 175" fill="#20b2aa"/>
+                </svg>
+            </div>
             <div class="hero-text">
                 <h1>ACT</h1>
                 <div class="vision-tagline">HEALTHY INDIVIDUALS, HEALTHY COMMUNITIES.</div>
@@ -635,32 +814,50 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About Section with Alternating Layout -->
     <section class="section light" id="about">
         <div class="section-content">
             <h2>About ACT</h2>
             <p class="section-intro">
-                ACT Missouri is a prevention-focused nonprofit dedicated to empowering youth and communities to create safer, healthier, and drug-free environments. We work tirelessly to strengthen individuals and communities across Missouri.
+                ACT Missouri is a prevention-focused nonprofit dedicated to empowering youth and communities to create safer, healthier, and drug-free environments.
             </p>
             
-            <div class="about-grid">
-                <div class="card" id="about-team">
+            <!-- Alternating Row 1 -->
+            <div class="alternate-row">
+                <div class="alternate-row-text">
                     <h3>👥 Our Team</h3>
                     <p>Dedicated professionals and passionate volunteers committed to making a difference through evidence-based prevention programs and community engagement.</p>
                 </div>
-                <div class="card" id="about-history">
+                <div class="alternate-row-image">
+                    <div class="alternate-row-image-placeholder">🤝</div>
+                </div>
+            </div>
+
+            <!-- Alternating Row 2 (Reversed) -->
+            <div class="alternate-row reverse">
+                <div class="alternate-row-text">
                     <h3>📚 Our History</h3>
                     <p>For years, ACT has been at the forefront of prevention efforts in Missouri, building a legacy of positive community impact and sustainable change.</p>
                 </div>
-                <div class="card">
+                <div class="alternate-row-image">
+                    <div class="alternate-row-image-placeholder">📖</div>
+                </div>
+            </div>
+
+            <!-- Alternating Row 3 -->
+            <div class="alternate-row">
+                <div class="alternate-row-text">
                     <h3>🎯 Our Approach</h3>
                     <p>We use evidence-based strategies and collaborative partnerships to create comprehensive prevention initiatives that address the root causes of substance abuse.</p>
+                </div>
+                <div class="alternate-row-image">
+                    <div class="alternate-row-image-placeholder">🎯</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Programs Section -->
+    <!-- Programs Section with Alternating Layout -->
     <section class="section programs" id="programs">
         <div class="section-content">
             <h2>Our Programs</h2>
@@ -668,22 +865,47 @@
                 ACT offers comprehensive, evidence-based prevention programs designed to empower youth and strengthen communities across Missouri.
             </p>
             
-            <div class="about-grid">
-                <div class="card" id="programs-youth">
+            <!-- Alternating Row 1 -->
+            <div class="alternate-row">
+                <div class="alternate-row-text">
                     <h3>🎓 Youth Prevention</h3>
                     <p>Targeted programs for young people focusing on substance abuse prevention, healthy decision-making, and building resilience through interactive education and mentorship.</p>
                 </div>
-                <div class="card" id="programs-community">
+                <div class="alternate-row-image">
+                    <div class="alternate-row-image-placeholder">🎓</div>
+                </div>
+            </div>
+
+            <!-- Alternating Row 2 (Reversed) -->
+            <div class="alternate-row reverse">
+                <div class="alternate-row-text">
                     <h3>🤝 Community Initiatives</h3>
                     <p>Collaborative efforts with local organizations, schools, and families to create drug-free environments and strengthen community bonds through partnership.</p>
                 </div>
-                <div class="card" id="programs-education">
+                <div class="alternate-row-image">
+                    <div class="alternate-row-image-placeholder">🤝</div>
+                </div>
+            </div>
+
+            <!-- Alternating Row 3 -->
+            <div class="alternate-row">
+                <div class="alternate-row-text">
                     <h3>📚 Education & Training</h3>
                     <p>Professional development workshops and training sessions for educators, parents, and community leaders on prevention strategies and evidence-based practices.</p>
                 </div>
-                <div class="card" id="programs-leadership">
+                <div class="alternate-row-image">
+                    <div class="alternate-row-image-placeholder">📚</div>
+                </div>
+            </div>
+
+            <!-- Alternating Row 4 (Reversed) -->
+            <div class="alternate-row reverse">
+                <div class="alternate-row-text">
                     <h3>🌟 Leadership Development</h3>
                     <p>Programs designed to cultivate emerging leaders who can drive prevention initiatives and create sustainable change in their communities.</p>
+                </div>
+                <div class="alternate-row-image">
+                    <div class="alternate-row-image-placeholder">🌟</div>
                 </div>
             </div>
         </div>
