@@ -138,64 +138,82 @@
             padding-left: 2rem;
         }
 
-        /* Hero Section */
+        /* Mountain Background Hero */
         .hero {
-            background: linear-gradient(135deg, var(--navy) 0%, var(--dark-navy) 100%);
-            color: white;
-            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #4a7c7e 0%, #5a8fa5 25%, #7ca8c0 50%, #9bbdd4 75%, #b0d4e0 100%);
+            position: relative;
+            padding: 5rem 2rem;
             text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
             min-height: 600px;
+            overflow: hidden;
+        }
+
+        /* Mountain layers */
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 300px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300"><defs><linearGradient id="mountain-gradient" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%%" style="stop-color:%234a7c7e;stop-opacity:0.8" /><stop offset="100%%" style="stop-color:%232d5a5f;stop-opacity:1" /></linearGradient></defs><path d="M0,150 L150,50 L300,120 L450,40 L600,100 L750,30 L900,110 L1050,60 L1200,140 L1200,300 L0,300 Z" fill="url(%23mountain-gradient)"/></svg>') no-repeat bottom;
+            background-size: cover;
+            opacity: 0.9;
+            z-index: 1;
+        }
+
+        /* Water reflection effect */
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 100px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(135, 206, 235, 0.2));
+            background-image: 
+                linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05) 76%, transparent 77%, transparent),
+                linear-gradient(transparent 24%, rgba(135, 206, 235, 0.1) 25%, rgba(135, 206, 235, 0.1) 26%, transparent 27%);
+            background-size: 50px 50px, 40px 40px;
+            z-index: 2;
         }
 
         .hero-content {
             max-width: 1200px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .hero-logo {
-            flex: 1;
-            min-width: 250px;
-        }
-
-        .hero-logo img {
-            max-width: 300px;
-            width: 100%;
-            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+            gap: 2rem;
+            position: relative;
+            z-index: 3;
         }
 
         .hero-text {
-            flex: 1;
-            min-width: 300px;
+            text-align: center;
+            color: white;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            color: var(--cyan);
+            font-size: 5rem;
+            margin-bottom: 0.5rem;
+            color: white;
             font-family: 'Helvetica Now', sans-serif;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.1em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-weight: 900;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            line-height: 1.8;
-            font-family: 'Avenir', sans-serif;
-        }
-
-        .hero .tagline {
-            font-size: 1.4rem;
+        .hero .vision-tagline {
+            font-size: 1.5rem;
             margin-bottom: 2rem;
-            color: var(--cyan);
+            color: #c8f0e0;
             font-family: 'Garet', serif;
             font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
         }
 
         .cta-button {
@@ -214,21 +232,40 @@
 
         .cta-button:hover {
             background-color: transparent;
-            color: var(--cyan);
+            color: white;
+            border-color: white;
         }
 
-        /* About Section */
+        /* Section Styles */
         .section {
             padding: 4rem 2rem;
+            position: relative;
         }
 
         .section.light {
             background-color: #f5f5f5;
         }
 
+        .section.light::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20,80 Q30,60 40,70 T60,80" stroke="%2320b2aa" stroke-width="0.5" fill="none" opacity="0.1"/><path d="M70,20 Q75,40 85,30 T95,50" stroke="%2320b2aa" stroke-width="0.5" fill="none" opacity="0.1"/></svg>');
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
         .section-content {
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .section h2 {
@@ -288,6 +325,24 @@
             background: linear-gradient(135deg, var(--cyan) 0%, var(--light-cyan) 100%);
             color: var(--navy);
             padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .mission-vision::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 15% 25%, rgba(26, 58, 82, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 85% 75%, rgba(26, 58, 82, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 50% 50%, rgba(26, 58, 82, 0.08) 1px, transparent 1px);
+            background-size: 150px 150px, 180px 180px, 100px 100px;
+            background-attachment: fixed;
+            opacity: 0.5;
+            pointer-events: none;
         }
 
         .mission-vision-content {
@@ -296,6 +351,8 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 3rem;
+            position: relative;
+            z-index: 1;
         }
 
         .mission-vision-box {
@@ -322,6 +379,92 @@
             font-weight: 700;
         }
 
+        /* Programs Section - Forest/Green theme */
+        .section.programs {
+            background: linear-gradient(to bottom, #f0f8f7 0%, #f5f5f5 100%);
+        }
+
+        .section.programs::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path d="M50,150 L50,50 L40,70 M50,50 L60,70" stroke="%2320b2aa" stroke-width="1" fill="none" opacity="0.15"/><path d="M150,180 L150,80 L140,100 M150,80 L160,100" stroke="%2320b2aa" stroke-width="1" fill="none" opacity="0.15"/></svg>');
+            background-repeat: repeat;
+            background-size: 300px 300px;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        /* Resources Section - Water wave theme */
+        .section.resources {
+            background-color: #f0f4f8;
+        }
+
+        .section.resources::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50"><path d="M0,25 Q25,15 50,25 T100,25" stroke="%2320b2aa" stroke-width="1" fill="none" opacity="0.15"/><path d="M0,35 Q25,25 50,35 T100,35" stroke="%2320b2aa" stroke-width="1" fill="none" opacity="0.1"/></svg>');
+            background-repeat: repeat-x;
+            background-size: 100% 80px;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        /* Advocacy Section - Network theme */
+        .section.advocacy {
+            background-color: #fff9f5;
+        }
+
+        .section.advocacy::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(32, 178, 170, 0.08) 20px, transparent 20px),
+                radial-gradient(circle at 80% 70%, rgba(32, 178, 170, 0.08) 25px, transparent 25px),
+                radial-gradient(circle at 50% 50%, rgba(32, 178, 170, 0.06) 30px, transparent 30px);
+            background-size: 100% 100%;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        /* Events Section - Calendar grid theme */
+        .section.events {
+            background: linear-gradient(135deg, #f5f5f5 0%, #f9f9f9 100%);
+        }
+
+        .section.events::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(0deg, transparent 24%, rgba(32, 178, 170, 0.08) 25%, rgba(32, 178, 170, 0.08) 26%, transparent 27%, transparent 74%, rgba(32, 178, 170, 0.08) 75%, rgba(32, 178, 170, 0.08) 76%, transparent 77%, transparent),
+                linear-gradient(90deg, transparent 24%, rgba(32, 178, 170, 0.08) 25%, rgba(32, 178, 170, 0.08) 26%, transparent 27%, transparent 74%, rgba(32, 178, 170, 0.08) 75%, rgba(32, 178, 170, 0.08) 76%, transparent 77%, transparent);
+            background-size: 50px 50px;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        /* Get Involved Section - Connected hands theme */
+        .section.get-involved {
+            background: linear-gradient(to right, #f0f8f7 0%, #f5f5f5 50%, #f9f9f9 100%);
+        }
+
         /* Footer */
         footer {
             background-color: var(--navy);
@@ -329,6 +472,8 @@
             text-align: center;
             padding: 2rem;
             font-family: 'Avenir', sans-serif;
+            position: relative;
+            z-index: 1;
         }
 
         footer p {
@@ -355,10 +500,10 @@
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 3rem;
             }
 
-            .hero p {
+            .hero .vision-tagline {
                 font-size: 1rem;
             }
 
@@ -465,16 +610,12 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Mountain Background -->
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-logo">
-                <img src="logo.png" alt="ACT Logo">
-            </div>
             <div class="hero-text">
                 <h1>ACT</h1>
-                <p>Creating Safer, Healthier, and Drug-Free Communities</p>
-                <div class="tagline">Healthy individuals… Healthy communities…</div>
+                <div class="vision-tagline">HEALTHY INDIVIDUALS, HEALTHY COMMUNITIES.</div>
                 <a href="#get-involved" class="cta-button">Get Involved Today</a>
             </div>
         </div>
@@ -520,7 +661,7 @@
     </section>
 
     <!-- Programs Section -->
-    <section class="section" id="programs">
+    <section class="section programs" id="programs">
         <div class="section-content">
             <h2>Our Programs</h2>
             <p class="section-intro">
@@ -549,7 +690,7 @@
     </section>
 
     <!-- Resources Section -->
-    <section class="section light" id="resources">
+    <section class="section resources light" id="resources">
         <div class="section-content">
             <h2>Resources</h2>
             <p class="section-intro">
@@ -578,7 +719,7 @@
     </section>
 
     <!-- Advocacy Section -->
-    <section class="section" id="advocacy">
+    <section class="section advocacy" id="advocacy">
         <div class="section-content">
             <h2>Advocacy & Impact</h2>
             <p class="section-intro">
@@ -607,7 +748,7 @@
     </section>
 
     <!-- Events Section -->
-    <section class="section light" id="events">
+    <section class="section events light" id="events">
         <div class="section-content">
             <h2>Events</h2>
             <p class="section-intro">
@@ -636,7 +777,7 @@
     </section>
 
     <!-- Get Involved Section -->
-    <section class="section" id="get-involved">
+    <section class="section get-involved" id="get-involved">
         <div class="section-content">
             <h2>Get Involved</h2>
             <p class="section-intro">
